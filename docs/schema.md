@@ -11,9 +11,9 @@ Each BBQ question has 3 answer options, so each question becomes 3 rows.
 
 | Column | Type | What it holds |
 |---|---|---|
-| `row_id` | string | Unique ID for the row, e.g. `gender_12_ans1` |
+| `row_id` | string | Unique ID for the row, e.g. `Gender_identity_12_ans1` |
 | `example_id` | int | BBQ's ID for the question |
-| `template_id` | string | Category + BBQ's `question_index`, e.g. `gender_3`. Used for template-grouped splits |
+| `template_id` | string | Category + BBQ's `question_index`, e.g. `Gender_identity_3`. Used for template-grouped splits |
 | `category` | string | Demographic category, e.g. `Gender_identity` |
 | `context_condition` | string | `ambig` or `disambig` |
 | `question_polarity` | string | `neg` or `nonneg` |
@@ -78,4 +78,4 @@ We don't keep a column called `label` in our table, to avoid mixing the two up.
 
 - `category` and `context_condition` are metadata for splitting and breaking down results. They are NOT inputs to the detector.
 - Splits are done by `template_id`, so all versions of a template end up in the same split.
-- This schema may change before [deadline]. After
+- This schema may change before [deadline]. After that, check with Hima before changing it.
