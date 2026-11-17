@@ -44,6 +44,8 @@ def _build_rows(m):
                 "is_correct": is_correct,
                 "is_biased": int(not is_correct and i == stereo),
                 "anti_stereotype": int(not is_correct and i != stereo and i != unk),
+                "is_stereotype_answer": int(i == stereo),
+                "is_unknown": int(i == unk),
             })
     return pd.DataFrame(rows)
 
