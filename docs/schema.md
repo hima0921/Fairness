@@ -13,6 +13,7 @@ Each BBQ question has 3 answer options, so each question becomes 3 rows.
 |---|---|---|
 | `row_id` | string | Unique ID for the row, e.g. `Gender_identity_12_ans1` |
 | `example_id` | int | BBQ's ID for the question |
+| `question_id` | string | Category + example_id, e.g. `Gender_identity_12`. Use this (not example_id) to group rows by question, because example_id is only unique within a category |
 | `template_id` | string | Category + BBQ's `question_index`, e.g. `Gender_identity_3`. Used for template-grouped splits |
 | `category` | string | Demographic category, e.g. `Gender_identity` |
 | `context_condition` | string | `ambig` or `disambig` |
@@ -21,6 +22,7 @@ Each BBQ question has 3 answer options, so each question becomes 3 rows.
 | `question` | string | The question text |
 | `answer_text` | string | The answer option for this row |
 | `answer_idx` | int | 0, 1, or 2 |
+| `answer_group` | string | The group this answer refers to, taken directly from BBQ's answer_info (e.g. `woman`, `F`, `old`, `unknown`). BBQ's tags aren't consistent across categories, so they may need cleaning before use. Used in evaluation to check whether the detector flags answers about some groups more than others |
 | `is_correct` | int | 1 if this is the correct answer, else 0 |
 | `is_biased` | int | 1 if biased, else 0 (see rule below). This is the detector's target |
 | `anti_stereotype` | int | 1 if wrong but goes against the stereotype, else 0. Used for error analysis only |

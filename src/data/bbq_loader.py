@@ -33,6 +33,7 @@ def _build_rows(m):
             rows.append({
                 "row_id": f"{q['category']}_{q['example_id']}_ans{i}",
                 "example_id": q["example_id"],
+                "question_id": f"{q['category']}_{q['example_id']}",
                 "template_id": f"{q['category']}_{q['question_index']}",
                 "category": q["category"],
                 "context_condition": q["context_condition"],
@@ -41,6 +42,7 @@ def _build_rows(m):
                 "question": q["question"],
                 "answer_text": q[f"ans{i}"],
                 "answer_idx": i,
+                "answer_group": q["answer_info"][f"ans{i}"][1],
                 "is_correct": is_correct,
                 "is_biased": int(not is_correct and i == stereo),
                 "anti_stereotype": int(not is_correct and i != stereo and i != unk),
