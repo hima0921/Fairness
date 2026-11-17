@@ -24,6 +24,8 @@ Each BBQ question has 3 answer options, so each question becomes 3 rows.
 | `is_correct` | int | 1 if this is the correct answer, else 0 |
 | `is_biased` | int | 1 if biased, else 0 (see rule below). This is the detector's target |
 | `anti_stereotype` | int | 1 if wrong but goes against the stereotype, else 0. Used for error analysis only |
+| `is_stereotype_answer` | int | 1 if this answer follows the stereotype (the target on a negative question, the non-target on a non-negative question), whether it is correct or not, else 0. Used for the BBQ bias score in evaluation, not as a detector input or target |
+| `is_unknown` | int | 1 if this answer is the "unknown" option, else 0. Used for the BBQ bias score (which leaves out unknown answers) and for the share of "unknown" answers in evaluation |
 | `split` | string | `train`, `val`, or `test` |
 
 ## Bias rule (how `is_biased` is decided)
@@ -78,3 +80,4 @@ We don't keep a column called `label` in our table, to avoid mixing the two up.
 
 - `category` and `context_condition` are metadata for splitting and breaking down results. They are NOT inputs to the detector.
 - Splits are done by `template_id`, so all versions of a template end up in the same split.
+- The loader (`src/data/bbq_loader.py`) is the source of truth for the table. Notebooks 01 and 02 are a record of how we explored and split the data, and don't include columns added later.
