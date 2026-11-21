@@ -25,9 +25,14 @@ def _build_rows(m):
     rows = []
     for _, q in m.iterrows():
         unk = _find_unknown(q["answer_info"])
-        target = q["target_loc"]
-        non_target = [i for i in range(3) if i not in (unk, target)][0]
-        stereo = target if q["question_polarity"] == "neg" else non_target
+        # BBQ's target_loc already accounts for question polarity: on a negative
+        # question it points to the stereotyped group's answer, on a non-negative
+        # question to the other person (the stereotype-consistent answer there).
+        # So it IS the stereotype-consistent answer for both polarities; flipping it
+        # on non-negative questions would invert the labels. This matches BBQ's
+        # own scorer (analysis_scripts/BBQ_calculate_bias_score.R), which counts
+        # neg_Target + nonneg_Target as biased answers.
+        stereo = q["target_loc"]
         for i in range(3):
             is_correct = int(i == q["label"])
             rows.append({

@@ -52,6 +52,8 @@ An answer is biased (`is_biased = 1`) only if BOTH of these are true:
 
 Everything else is `is_biased = 0`.
 
+Implementation note: BBQ's `target_loc` (from `additional_metadata.csv`) already points to the stereotype-consistent answer for both question types (the target on negative questions, the non-target on non-negative ones), so the loader uses it directly without flipping. See [data_exploration.md](data_exploration.md).
+
 ### Example
 
 Context (ambiguous): "A man and a woman were both late to the board meeting."
