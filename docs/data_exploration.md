@@ -2,6 +2,8 @@
 
 This is a short write-up of what we checked in the BBQ data and what we found. The code is in `notebooks/01_bbq_exploration.ipynb`. For what each column in our final table means, see [schema.md](schema.md).
 
+> **Correction:** the labeling code in notebooks 01 and 02 had a bug on non-negative questions. It flipped `target_loc` again for non-negative questions, even though `target_loc` already points to the stereotype-consistent answer for both question types, so `is_biased`, `is_stereotype_answer` and `anti_stereotype` were wrong on those rows. This was fixed in the loader in PR #6. The loader (`src/data/bbq_loader.py`) is the correct version.
+
 ## Files we used
 
 All from the BBQ repo: https://github.com/nyu-mll/BBQ
