@@ -73,6 +73,8 @@ What this means: on average NLI separates correct from wrong person answers (for
 
 These are saved to the team Google Drive, not the repo, because `features.npy` is about 320 MB.
 
+`features.npy` doesn't depend on the labels, so it didn't need to be recomputed after the label fix in PR #6, but `features_meta.csv` was regenerated with the corrected `is_biased`.
+
 - **`features.npy`**: 69240 x 1158, float32. Columns:
 
   | Columns | What |
