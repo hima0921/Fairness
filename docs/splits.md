@@ -35,7 +35,7 @@ Rows per split:
 
 The row split isn't exactly 70/15/15 because we split templates, not rows, and templates don't all have the same number of rows (some have more name swaps than others).
 
-The share of biased rows is **0.25 in every split**, the same as in the full table.
+The share of biased rows is **about 0.25 in every split** (train 0.250, val 0.248, test 0.250), close to the full table's 0.249.
 
 We also checked that no template is in more than one split and that every row has a split (both are 0).
 
