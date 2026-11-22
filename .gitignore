@@ -223,3 +223,6 @@ __marimo__/
 bbq_table.csv
 features_meta.csv
 features.npy
+
+# Model outputs and checkpoints
+outputs/
